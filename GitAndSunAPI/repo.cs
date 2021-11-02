@@ -17,5 +17,7 @@ namespace GitAndSunAPI
         public DateTime LastPushUtc { get; set; }
 
         public string LastPush => LastPushUtc.ToString("MM/dd/yyyy");
+
+        public DateTime LastPushLocal => LastPushUtc.ToLocalTime();
     }
 }

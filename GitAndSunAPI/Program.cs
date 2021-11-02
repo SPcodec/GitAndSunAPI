@@ -42,7 +42,7 @@ namespace GitAndSunAPI
             {
                 Console.WriteLine(repo.Name);
                 Console.WriteLine(repo.Description);
-                Console.WriteLine(repo.LastPush);
+                Console.WriteLine(repo.LastPushLocal);
 
                 var jsonstring = await ProcessSun(repo.LastPush);
                 sun account = JsonConvert.DeserializeObject<sun>(jsonstring);
