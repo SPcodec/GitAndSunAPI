@@ -25,7 +25,7 @@ namespace GitAndSunAPI
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
+            //Converting JSON to string instead since it is nested
             var stringTask = client.GetStringAsync($"https://api.sunrise-sunset.org/json?lat=51.5072&lng=0.1276&date={date}");
 
             var msg = await stringTask;
@@ -43,8 +43,10 @@ namespace GitAndSunAPI
                 Console.WriteLine(repo.Name);
                 Console.WriteLine(repo.Description);
                 Console.WriteLine(repo.LastPushLocal);
-
+                
+                //Use the last push date for url
                 var jsonstring = await ProcessSun(repo.LastPush);
+                //Deserialise nested JSON
                 sun account = JsonConvert.DeserializeObject<sun>(jsonstring);
                 Console.WriteLine($"Sunrise: {account.results.sunrise}");
                 Console.WriteLine($"Sunset: {account.results.sunset}");

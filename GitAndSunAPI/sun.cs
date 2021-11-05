@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GitAndSunAPI
 {
+    //Nested JSON
     class Results
     {
         public string sunrise { get; set; }
